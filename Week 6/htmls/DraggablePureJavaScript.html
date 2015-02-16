@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id='a'>
+    <div>moose</div>
+    <div>cat</div>
+    <div>moosalo</div>
+    <div>bang</div>
+    <div>shank</div>
+    <div>jeebus</div>
+</div>
+</body>
+
+<style>
+
+</style>
+
+<script>
+    var x = document.getElementById('a')
+
+    for (var n = 0; n < x.children.length; n++) {
+;
+        (function (c) {
+            c.addEventListener('mousedown', function (e) {
+                console.log('dragstart')
+                this.style.opacity = '.9'
+                this.style.position = 'relative'
+
+                if (c.style.top === "") {
+                    var offsetStart = 0
+                } else {
+                    var offsetStart = parseInt(c.style.top.slice(0, -2))
+                }
+
+                var mouseStart = e.pageY
+                var mousemoveHandler;
+                document.addEventListener('mousemove', mousemoveHandler = function (e) {
+                    //this.style.opacity -= '.01'
+                    c.style.top = offsetStart + e.pageY - mouseStart
+                    console.log('drag: ', e.pageY, mouseStart, c.style.top)
+                })
+                document.addEventListener('mouseup', function (e) {
+                    console.log('dragend')
+                    document.removeEventListener('mousemove', mousemoveHandler)
+                })
+            })
+        })(x.children[n])
+    }
+
+</script>
+</body>
+</html>

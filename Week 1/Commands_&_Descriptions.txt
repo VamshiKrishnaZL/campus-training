@@ -1,0 +1,107 @@
+List of Commands & their descriptions.
+
+pwd - 
+	prints the name of the directory the shell is in. 
+
+hostname - 
+	prints the name of the computer. Other computers in the LAN use this name to identify this computer.
+
+mkdir -
+        creates directories for simple names in the current directory & directories with full paths.
+
+cd -
+       make the specified directory as the current working directory.
+
+ls -
+       list files in each of the specified list of directories.Can also list the attributes.
+       Also works on files; useful when we need to find the file attributes like owner, permissions, etc.,. 
+		Ex: ls -l somefile.txt
+
+rmdir -
+        remove the specified list of directories.
+
+pushd & popd -
+     Each shell has a stack of directories.
+     The top of the stack is always synchrnoized with the current working directory & vice versa( current working directory matches the top of the stack.)
+     pushd - works similar to cd but also pushes the directory onto the stack.
+     popd - pops directory from the non empty stack and makes the popped directory as the current working directory.
+
+
+touch -
+   changes the timestamp(date+time) of the last access time or last modification time of specified files or directories.
+   It can also be used to created empty files.
+
+cp -  
+    used to created copies for the files or directories. -r options copies the directories recursively.
+mv - 
+   moves files or directories to the specified directory. files or directories get renamed if they are moved to the same directory.
+less & more - directioin
+    both commands provide paginated views of a file if a file content is too large to fit the window.
+    less supports navigation to backwards which more does not support.
+cat -
+   writes the contents of the each of the specefied list of files to the file (default stdout).
+rm - removes the list of specified files. To remove directories use  the -r option.
+
+
+Pipes & redirection.
+| operator is used to feed the output of one command as input to another command
+ Ex: cat file.txt | less  # instead of writing to stdout, the accumulated output of cat command is fed as input to the less command. This is effectively equivalent to 'less file.txt'
+> operator writes the accumulated output of the command before it  and writes it to the specified file.
+>> operator works same as > but insted it appends the output to the specified file.
+< operator feeds the input from a file to a command.
+
+Wildcards :
+Wildcards are used to represent a set of files rather than a single file.
+Ex: *.txt represents all files having .txt extension.
+Useful when we need to specify a list of file to  commands that accept multiple files as operands.
+* matches any number of characters
+? matches a single character
+[characters] matches any character specified in the square brackets
+[!characters] matches any character other than those specified in the square brackets.
+
+
+find - 
+
+ finds files or directories based on the following kinds of conditions :
+
+  1) matching name with option of case being ignored(-iname)
+  2) having specified premissions (-perm)
+  3) having the specified range of modification or access time or range of size (-mmin, -cmin, -mtime, -size)
+  4) in the specified group or user (-user,-group)
+  5) empty files or directories (-empty)
+
+  find also allows execute commands on the result using -exec cmd {}
+
+
+grep 
+  - searches for strings matching the specified regular expression in the specified litst of files.
+  It includes options like
+	1) case insenstive search (-i)
+	2) word matches (-w)
+	3) before , after , around matches (-B,-A,-C N)
+	4) recursive search in directories (-r)
+	5) inverted matches (-v) 
+	6) count of matches (-c)
+	7) listing files containing lines matching the regular expression.
+	8) printing only the matched string (-o)
+	9) printing the byte position of the matched string (-b).
+
+etc.,.
+
+man - 
+	displays the manual of the specified command.It is a system manual viewer. Features inlcude navigating top and bottom , search for text , etc.,.
+
+apropos -
+   searches man pages of available unix commands for specific functionality.
+env -
+   displays the environment that the shell inherited from its parent when no arguments are specified.
+   VAR=VALUE kind of arguments add new variable or change the value of exising variable.
+   'cmd args' kinds of arguments run the cmd with the specified  environment or modified(var=value) environment.
+
+export -
+  A process created from a parent process inherits the enviroment(set of variable with their values) of its parent process. To allow such varaible to be inherited into the child process, we should mark the variable as exported .
+ Ex: export PATH
+
+exit
+  - logouts the user account or exits from the shell.
+

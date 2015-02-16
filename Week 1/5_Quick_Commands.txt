@@ -1,0 +1,14 @@
+5 Quick Commands to get help on unix or linux command.
+
+
+1) apropos - searches the man pages of available linux commands for a related functionality.
+   Ex: apropos grep.
+2) man - displays man pages of the specified command. It explains all the options available for a command in a detailed manner.
+   Ex: man man
+  -k option is helpful when we do not know the specific command name.
+3) whatis - displays a single line description of the command.
+  Ex: whatis whatis
+4) -h or --help option of the command itself.
+   Ex: chmod -h
+5) info - info documents of the command.
+  Ex: info whatis

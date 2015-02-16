@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-image-gallery.css">
+    <link rel="stylesheet" href="css/blueimp-image-gallery.css">
+</head>
+<body>
+
+<div id="tabContainer">
+    <ul class="nav nav-tabs" id="tab1">
+        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#aboutMe">About Me</a></li>
+        <li><a href="#contactMe">Contact Me</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div class="tab-pane fade in active" id="home">
+            <h3>Home</h3>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dignissimos doloribus fugit
+                iste provident reiciendis suscipit. A aperiam consequatur deserunt dolorum et ex fugit ipsum, magnam
+                minus
+                nam odit quasi rem saepe sed unde voluptate voluptates! Cum, deserunt ducimus ea eligendi
+                exercitationem,
+                fuga laboriosam mollitia nesciunt perferendis quam quas sapiente temporibus voluptates? Aliquam dolorem
+                id
+                impedit nemo nobis odit praesentium quia? Aperiam at cum itaque iure nostrum odit quaerat repellendus
+                saepe
+                sint veritatis. Ad adipisci amet eaque ipsa provident quasi quo repellat sequi? Aliquam, cupiditate
+                dolorum
+                in laborum libero nemo odio officiis perspiciatis recusandae repellendus, repudiandae sapiente similique
+                sunt?
+            </p>
+        </div>
+
+        <div class="tab-pane fade active" id="aboutMe">
+            <h3>About Me</h3>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur aut enim est et eum illum,
+                impedit in iusto laborum mollitia nobis odit quia quo quod saepe sequi sint sit suscipit voluptatibus.
+                Adipisci beatae doloremque ducimus eligendi est labore maxime natus necessitatibus, pariatur placeat
+                sequi
+                soluta unde voluptatibus. Ab asperiores consectetur cum delectus, deserunt doloremque ex id in ipsa
+                maiores,
+                nam nostrum similique? At fuga laudantium praesentium quaerat reprehenderit saepe suscipit, totam. Ab at
+                atque beatae, consectetur consequuntur dolore est eum eveniet, explicabo ipsum molestiae nam odit
+                quibusdam!
+                Aliquam at delectus, dicta dignissimos dolor eos fugit laboriosam maxime porro voluptate.
+            </p>
+        </div>
+
+        <div class="tab-pane fade" id="contactMe">
+            <h3>Contact Me</h3>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam enim error, et iste natus officiis
+                quidem soluta tempore velit! Commodi, consectetur cupiditate inventore maiores maxime pariatur provident
+                quidem quis reprehenderit sint totam vitae voluptatibus! Cumque deleniti eveniet modi qui sed. Aliquid
+                expedita fugiat molestias praesentium qui quidem voluptas! A asperiores autem delectus dolor eligendi
+                fuga
+                harum illum inventore itaque molestias necessitatibus nemo nobis numquam, optio porro possimus quae
+                quibusdam quis quisquam repudiandae sapiente sed suscipit velit voluptas voluptatibus! Amet corporis
+                deleniti excepturi, libero nihil praesentium quod? A consequatur cumque distinctio illum laudantium modi
+                quas, ratione recusandae soluta voluptate! Suscipit.
+            </p>
+        </div>
+
+
+        <div class="tab-pane fade" id="gallery">
+            <h3>Gallery</h3>
+
+            <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+            <div id="blueimp-gallery" class="blueimp-gallery">
+                <!-- The container for the modal slides -->
+                <div class="slides"></div>
+                <!-- Controls for the borderless lightbox -->
+                <h3 class="title"></h3>
+                <a class="prev">‹</a>
+                <a class="next">›</a>
+                <a class="close">×</a>
+                <a class="play-pause"></a>
+                <ol class="indicator"></ol>
+                <!-- The modal dialog, which will be used to wrap the lightbox content -->
+                <div class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body next"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left prev">
+                                    <i class="glyphicon glyphicon-chevron-left"></i>
+                                    Previous
+                                </button>
+                                <button type="button" class="btn btn-primary next">
+                                    Next
+                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="links">
+                <a href="http://media02.hongkiat.com/nature-photography/Azalea.jpg" data-gallery><img
+                        src="http://media02.hongkiat.com/nature-photography/Azalea.jpg" alt="Azalea"/></a>
+                <a href="http://media02.hongkiat.com/nature-photography/fc03.jpg" data-gallery><img
+                        src="http://media02.hongkiat.com/nature-photography/fc03.jpg" alt=""/></a>
+                <a href="http://media02.hongkiat.com/nature-photography/Athabasca.jpg" data-gallery><img
+                        src="http://media02.hongkiat.com/nature-photography/Athabasca.jpg" alt="Athabasca"/>
+                </a>
+                <a href="http://media02.hongkiat.com/nature-photography/autumn-poolside.jpg" data-gallery><img
+                        src="http://media02.hongkiat.com/nature-photography/autumn-poolside.jpg" alt=""/></a>
+                <a href="http://media02.hongkiat.com/nature-photography/The-best-nature-photography-collection.jpg"
+                   data-gallery><img
+                        src="http://media02.hongkiat.com/nature-photography/The-best-nature-photography-collection.jpg"
+                        alt=""/></a>
+                <a href="http://media02.hongkiat.com/nature-photography/red-planet.jpg" data-gallery><img
+                        src="http://media02.hongkiat.com/nature-photography/red-planet.jpg" alt=""/></a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.blueimp-gallery.min.js"
+        ></script>
+<script type="text/javascript" src="js/bootstrap-image-gallery.js"
+        ></script>
+
+<script type="text/javascript">
+    console.log("Running javascript code.....")
+    jQuery(function () {
+        console.log("Running jQuery init callback.....")
+        $("#tab1 > li > a").click(function (e) {
+            console.log("tab is clicked")
+            e.preventDefault();
+            $(this).tab("show")
+        })
+    })
+
+</script>
+
+
+<style>
+
+    @media screen and (max-width: 600px) {
+
+        .nav-tabs li {
+            clear: both;
+            width: 100%;
+        }
+
+    }
+
+    a > img {
+        width: 100px;
+        height: 100px;
+    }
+
+
+</style>
+
+</body>
+</html>

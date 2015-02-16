@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Creating Zoompan</title>
+</head>
+<body>
+
+<button id="enableZoomPan">Enable Zoom Pan</button>
+<br/>
+
+<div id="container">
+
+    <div id="svgViewport">
+
+        <svg id="svg"></svg>
+
+    </div>
+
+
+    <div id="zoomPan">
+
+
+    </div>
+
+
+</div>
+
+
+<style>
+
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #svgViewport {
+        width: 100%;
+        height: 100%;
+        /*border: 2px solid #a54d35;*/
+        position: relative;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    #container {
+        position: relative;
+        overflow: hidden;
+        width: 304px;
+        height: 304px;
+        border: 2px solid crimson;
+    }
+
+    #zoomPan {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border: 2px solid forestgreen;
+        display: none;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        background-color: white;
+        cursor: zoom-in;
+    }
+</style>
+
+<script type="text/javascript" src="../js/lib/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="../js/lib/snap.svg-min.js"></script>
+
+<script>
+    const s = Snap("#svg")
+    const SVG_VIEWPORT_WIDTH = 300
+    const SVG_VIEWPORT_HEIGHT = 300
+
+    const HALF_WIDTH = SVG_VIEWPORT_WIDTH * 0.5
+    const HALF_HEIGHT = SVG_VIEWPORT_HEIGHT * 0.5
+
+    s.text(60, 60, "!!! Hello World !!!")
+
+    const $zoomPanButton = $("#enableZoomPan")
+    const $zoomPan = $("#zoomPan")
+    const $document = $(document)
+
+    const $container = $("#container")
+
+    var clone = null
+    var clonedNode = null
+    var $clonedNode = null
+    var zoomPanEnabled = false
+    var zoomLevel
+    var xFactor, yFactor
+
+    function setZoomLevel(zoomLevel) {
+        window.zoomLevel = zoomLevel
+        xFactor = (SVG_VIEWPORT_WIDTH / zoomLevel)
+        yFactor = (SVG_VIEWPORT_HEIGHT / zoomLevel)
+    }
+
+    setZoomLevel(2)
+
+    $zoomPanButton.click(function (e) {
+        // if the zoom pan is not enabled
+        if (!zoomPanEnabled) {
+            //disable the zoom button
+            $zoomPanButton.attr({
+                disabled: ""
+            })
+            //let other code know about this
+            zoomPanEnabled = true;
+            //clone the svg element
+            clone = s.clone()
+            clonedNode = clone.node = clone.node.cloneNode(true)
+            s.remove(clone)
+            $clonedNode = $(clonedNode)
+            $clonedNode.remove()
+            //we should display the zoom pan
+            $zoomPan.css({
+                display: "block",
+                left: -xFactor + "px",
+                top: -yFactor + "px",
+                width: (SVG_VIEWPORT_WIDTH * zoomLevel) + "px",
+                height: (SVG_VIEWPORT_HEIGHT * zoomLevel) + "px"
+            })
+            console.log("Viewbox is set")
+            $clonedNode.attr({
+                viewBox: "0 0 " + HALF_WIDTH + " " + HALF_HEIGHT
+            }).css({
+                position: "relative"
+            })
+            $zoomPan.append($clonedNode)
+//            $zoomPan.remove()
+//            $container.append($zoomPan)
+        } else {
+            console.log("You should not see this on the console")
+        }
+    })
+
+    $document.keyup(function (e) {
+        if (e.keyCode == 27 && zoomPanEnabled) {
+            // enable the button to zoom
+            $zoomPanButton.attr({
+                disabled: null
+            })
+            //we should hide the zoom pan
+            $zoomPan.css({
+                display: "none"
+            })
+            // let other code know about this
+            zoomPanEnabled = false;
+            //remove children from the zoom pan
+            $zoomPan.children().remove()
+            //clear cache to avoid memory leaks
+            clone = null
+            clonedNode = null
+        }
+    })
+
+    const $svgViewport = $("#svgViewport")
+    const svgNode = $svgViewport.node
+
+    var viewBox = ""
+
+    const viewportLeft = $svgViewport.position().left;
+    const viewportTop = $svgViewport.position().top;
+    document.addEventListener("mousemove", function (mouseMoveEvent) {
+        if (zoomPanEnabled) {
+            $zoomPan.css({
+                left: mouseMoveEvent.pageX - xFactor,
+                top: mouseMoveEvent.pageY - yFactor
+            })
+//            viewBox = "" + (mouseMoveEvent.pageX - mouseMoveEvent.offsetX - viewportLeft + 12)
+//            + " " + (mouseMoveEvent.pageY - mouseMoveEvent.offsetY - viewportTop + 12) + ""
+        }
+    })
+
+    function updateZOOMPan() {
+        if (zoomPanEnabled) {
+            clone.attr({
+                viewBox: viewBox
+            })
+        }
+        window.requestAnimationFrame(updateZOOMPan)
+    }
+
+    window.requestAnimationFrame(function () {
+        updateZOOMPan()
+    })
+
+    //    $html.mousemove(function (e) {
+    //
+    //    })
+
+    $container.mousemove(function (e) {
+
+    })
+
+    $svgViewport.mousemove(function (e) {
+//        var enabled = false
+//        if (zoomPanEnabled) {
+//            if (clonedNode === e.target) {
+        //mouse-move on the SVG element
+//                console.log("Move on the SVG element")
+//            if (enabled) {
+//                $zoomPan.css({
+//                    display: "block"
+//                })
+//                enabled = true;
+//            }
+//            else {
+//                $zoomPan.css({
+//                    display: "none"
+//                })
+//                enabled = false;
+//            }
+//            }
+//        }
+    })
+
+</script>
+
+</body>
+</html>
